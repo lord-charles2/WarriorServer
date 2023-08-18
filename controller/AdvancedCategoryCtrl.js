@@ -48,7 +48,7 @@ const updateAdvancedCategoryById = async (req, res) => {
     if (!updatedCategory) {
       return res.status(404).json({ message: "Advanced category not found" });
     }
-    res.json(updatedCategory);
+    res.json({ updatedCategory: updatedCategory, message: "success" });
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
