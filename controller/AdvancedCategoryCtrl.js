@@ -89,7 +89,7 @@ const createAdvancedSubcategory = async (req, res) => {
     });
     await newSubcategory.save();
 
-    res.status(201).json(newSubcategory);
+    res.status(201).json({ newSubcategory: newSubcategory, success: true });
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
