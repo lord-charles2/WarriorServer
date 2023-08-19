@@ -106,7 +106,7 @@ const getAllSubcategoriesInCategory = async (req, res) => {
     if (!advancedCategory) {
       return res.status(404).json({ message: "Advanced category not found" });
     }
-    res.json(advancedCategory);
+    res.json({ advancedCategory: advancedCategory, success: true });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
