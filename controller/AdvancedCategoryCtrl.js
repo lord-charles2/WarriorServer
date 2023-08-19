@@ -139,7 +139,7 @@ const updateSubcategoryInCategory = async (req, res) => {
     if (!advancedSubcategory) {
       return res.status(404).json({ message: "Subcategory not found" });
     }
-    res.json(advancedSubcategory);
+    res.json({ advancedSubcategory: advancedSubcategory, success: true });
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
