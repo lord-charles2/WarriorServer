@@ -24,6 +24,7 @@ router.get("/", getAllAdvancedCategories);
 //subcategory
 router.post("/sub/:id", authMiddleware, isAdmin, createAdvancedSubcategory);
 router.get("/sub/:id", getAllSubcategoriesInCategory);
+router.get("/sub/single/:id", getSubcategoryInCategory);
 router.patch("/sub/:id", authMiddleware, isAdmin, updateSubcategoryInCategory);
 router.delete("/sub/:id", authMiddleware, isAdmin, deleteSubcategoryInCategory);
 

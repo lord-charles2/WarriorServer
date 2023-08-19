@@ -114,17 +114,14 @@ const getAllSubcategoriesInCategory = async (req, res) => {
 
 // Get a specific subcategory within a category
 const getSubcategoryInCategory = async (req, res) => {
-  const categoryId = req.params.categoryId;
-  const subcategoryId = req.params.subcategoryId;
   try {
-    const advancedSubcategory = await AdvancedSubcategory.findOne({
-      _id: subcategoryId,
-      category: categoryId,
-    });
+    const advancedSubcategory = await AdvancedSubcategory.findById(
+      req.params.id
+    );
     if (!advancedSubcategory) {
       return res.status(404).json({ message: "Subcategory not found" });
     }
-    res.json(advancedSubcategory);
+    res.json({ advancedSubcategory: advancedSubcategory, success: true });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
