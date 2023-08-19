@@ -16,7 +16,7 @@ const createAdvancedCategory = async (req, res) => {
 const getAllAdvancedCategories = async (req, res) => {
   try {
     const advancedCategories = await AdvancedCategory.find();
-    res.json(advancedCategories);
+    res.json({ advancedCategories: advancedCategories, success: true });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
