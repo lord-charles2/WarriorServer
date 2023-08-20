@@ -8,13 +8,11 @@ const postCategory = asyncHandler(async (req, res) => {
   const { title, title2, icon, quantity, productId } = req.body;
   validateMongodbId(productId);
   // Find or create the category object
-  let category = await Category.findOne({ title });
+  let category = await Category.findOne({ title, title2 });
   if (!category) {
     category = await Category.create({
       title,
       title2,
-      icon,
-      quantity,
     });
   } else {
     res.status(409).json({
@@ -43,7 +41,7 @@ const postCategory = asyncHandler(async (req, res) => {
 
   // Return a success message and the new category and availability
   res.status(201).json({
-    message: "category added to product",
+    success: true,
     category,
   });
 });
