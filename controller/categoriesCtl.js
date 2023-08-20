@@ -14,11 +14,6 @@ const postCategory = asyncHandler(async (req, res) => {
       title,
       title2,
     });
-  } else {
-    res.status(409).json({
-      message:
-        "category already exists but am pushing category to your product",
-    });
   }
 
   // Update the product with the new category
@@ -33,6 +28,8 @@ const postCategory = asyncHandler(async (req, res) => {
       new: true,
     }
   );
+
+  console.log(product);
 
   // If the product does not exist, return an error
   if (!product) {
