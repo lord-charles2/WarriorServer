@@ -36,6 +36,22 @@ const getAdvancedCategoryById = async (req, res) => {
   }
 };
 
+// Get an advanced category by collection name
+// const getAdvancedCategoryByCollection = async (req, res) => {
+//   const { collectionName } = req.body;
+//   try {
+//     const advancedCategory = await AdvancedCategory.find({
+//       name: collectionName,
+//     });
+//     if (!advancedCategory) {
+//       return res.status(404).json({ message: "no categories found" });
+//     }
+//     res.json({ advancedCategory: advancedCategory, success: true });
+//   } catch (error) {
+//     res.status(500).json({ error: error.message });
+//   }
+// };
+
 // Update an advanced category by ID
 const updateAdvancedCategoryById = async (req, res) => {
   const categoryId = req.params.id;
