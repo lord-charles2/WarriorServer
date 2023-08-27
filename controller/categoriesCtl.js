@@ -105,10 +105,30 @@ const getCategoryById = asyncHandler(async (req, res) => {
   res.status(200).json({ category, message: "success" });
 });
 
+// Get a single category by matching both title1 and title2
+const getCategoryByTitles = asyncHandler(async (req, res) => {
+  const { title1, title2 } = req.body;
+
+  if (!title1 || !title2) {
+    return res.status(400).json({
+      message: "Both title1 and title2 are required query parameters",
+    });
+  }
+
+  const category = await Category.findOne({ title1, title2 }).select("-__v");
+
+  if (!category) {
+    return res.status(404).json({ message: "Category not found" });
+  }
+
+  res.status(200).json({ category, message: "Success" });
+});
+
 module.exports = {
   getCategories,
   getCategoryById,
   postCategory,
   deleteCategory,
   updateCategory,
+  getCategoryByTitles,
 };

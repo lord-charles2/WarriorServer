@@ -5,11 +5,14 @@ const {
   postCategory,
   deleteCategory,
   updateCategory,
+  getCategoryByTitles,
 } = require("../controller/categoriesCtl");
 const { authMiddleware, isAdmin } = require("../middlewares/authMiddleware");
 
 router.get("/", getCategories);
 router.get("/:id", getCategoryById);
+router.get("/get/by-titles", getCategoryByTitles);
+
 router.post("/", authMiddleware, isAdmin, postCategory);
 router.put("/:id", authMiddleware, isAdmin, updateCategory);
 router.delete("/:id", authMiddleware, isAdmin, deleteCategory);
