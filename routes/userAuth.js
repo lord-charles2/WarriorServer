@@ -4,6 +4,7 @@ const { authMiddleware, isAdmin } = require("../middlewares/authMiddleware");
 const {
   createUser,
   logIn,
+  logInEmail,
   getUsers,
   getUserById,
   getUserByEmail,
@@ -32,6 +33,7 @@ const {
 // User endpoints
 router.post("/register", createUser);
 router.post("/login", logIn);
+router.post("/login/by-email", logInEmail);
 router.get("/users/get-all", authMiddleware, isAdmin, getUsers);
 router.get("/users/get/:id", authMiddleware, isAdmin, getUserById);
 router.get("/users/get-email/", authMiddleware, isAdmin, getUserByEmail);

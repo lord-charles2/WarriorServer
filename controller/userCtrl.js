@@ -62,6 +62,32 @@ const logIn = asyncHandler(async (req, res) => {
   }
 });
 
+//login AI CHECKED
+const logInEmail = asyncHandler(async (req, res) => {
+  const secret = process.env.SECRET;
+  const { email, password } = req.body;
+  const user = await User.findOne({ email, password });
+
+  if (!user) {
+    res.status(404).send("Wrong email!");
+    return;
+  }
+
+  if (user && bcrypt.compareSync(password, user.passwordHash)) {
+    const token = jwt.sign(
+      {
+        userId: user.id,
+        isAdmin: user.isAdmin,
+      },
+      secret,
+      { expiresIn: "2000d" }
+    );
+    res.status(200).send({ user: user.email, token });
+  } else {
+    res.status(404).send("Wrong password!");
+  }
+});
+
 //get users
 const getUsers = asyncHandler(async (req, res) => {
   const { sort } = req.query;
@@ -614,4 +640,5 @@ module.exports = {
   userCart,
   getUserCart,
   emptyCart,
+  logInEmail,
 };
