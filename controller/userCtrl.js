@@ -39,11 +39,11 @@ const createUser = asyncHandler(async (req, res) => {
 //login AI CHECKED
 const logIn = asyncHandler(async (req, res) => {
   const secret = process.env.SECRET;
-  const { email, password } = req.body;
-  const user = await User.findOne({ email, password });
+  const { mobile, password } = req.body;
+  const user = await User.findOne({ mobile, password });
 
   if (!user) {
-    res.status(404).send("Wrong email!");
+    res.status(404).send("Wrong mobile!");
     return;
   }
 

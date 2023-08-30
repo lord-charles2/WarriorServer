@@ -29,7 +29,7 @@ const userSchema = new mongoose.Schema(
     },
     isAdmin: {
       type: Boolean,
-      required: true,
+      required: false,
     },
     isBlocked: {
       type: Boolean,
