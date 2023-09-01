@@ -58,7 +58,7 @@ router.get("/orders/all", authMiddleware, isAdmin, getAllOrders); //for admin on
 router.get("/orders/:id", getOrderById);
 router.post("/orders", authMiddleware, getOrders); //user orders
 router.post("/cart/order", authMiddleware, createOrder);
-router.put("/address", authMiddleware, saveAddress);
+router.patch("/address", authMiddleware, saveAddress);
 router.post("/cart/addtocart", authMiddleware, userCart);
 router.get("/cart/getcart", authMiddleware, getUserCart);
 router.delete("/cart/clear", authMiddleware, emptyCart);

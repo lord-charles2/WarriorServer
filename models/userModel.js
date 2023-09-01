@@ -36,9 +36,28 @@ const userSchema = new mongoose.Schema(
       default: false,
     },
     address: {
-      type: String,
-      default: "Egerton University, Main Campus, Njoro",
+      phoneNumber: {
+        type: String,
+        default: "",
+      },
+      message: {
+        type: String,
+        default: "",
+      },
+      firstName: {
+        type: String,
+        default: "",
+      },
+      secondName: {
+        type: String,
+        default: "",
+      },
+      County: {
+        type: String,
+        default: "",
+      },
     },
+
     cart: {
       type: Array,
       default: [],

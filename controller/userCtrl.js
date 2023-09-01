@@ -549,15 +549,23 @@ const updateOrderStatus = asyncHandler(async (req, res) => {
 const saveAddress = asyncHandler(async (req, res) => {
   const { userId } = req.user;
   validateMongodbId(userId);
+
   const updatedUser = await User.findByIdAndUpdate(
     userId,
     {
-      address: req?.body?.address,
+      address: {
+        phoneNumber: req?.body?.phoneNumber || "",
+        message: req?.body?.message || "",
+        firstName: req?.body?.firstName || "",
+        secondName: req?.body?.secondName || "",
+        County: req?.body?.County || "",
+      },
     },
     {
       new: true,
     }
   );
+
   res.json(updatedUser);
 });
 
